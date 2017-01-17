@@ -15,13 +15,13 @@ class Conversation {
 
     sendMessage(as, msg) {
         if (parseInt(as, 10) === 1) {
-            this.c1.sendMessage(msg);
+            this.c2.sendMessage(msg);
             this.message('message', {
                 name: 'Person 1',
                 message: msg
             });
         } else if (parseInt(as, 10) === 2) {
-            this.c2.sendMessage(msg);
+            this.c1.sendMessage(msg);
             this.message('message', {
                 name: 'Person 2',
                 message: msg
@@ -32,11 +32,13 @@ class Conversation {
     stop() {
         if (this.c1)
             this.c1.disconnect();
-            this.c1 = null;
+        this.c1 = null;
         if (this.c2)
             this.c2.disconnect();
-            this.c2 = null;
-        }
+        this.c2 = null;
+
+        this.message('connected', false);
+    }
 
     start() {
         this.c1 = new Omegle(this.language);
@@ -46,7 +48,7 @@ class Conversation {
             let original = text;
             let newText = original;
             this.replacements.forEach((replacement) => {
-              console.log(new RegExp(`/${replacement.find}/ig`), replacement.replace);
+                console.log(new RegExp(`/${replacement.find}/ig`), replacement.replace);
                 newText = newText.replace(new RegExp(replacement.find, 'ig'), replacement.replace);
             });
             console.log(newText);
@@ -62,7 +64,7 @@ class Conversation {
             let original = text;
             let newText = original;
             this.replacements.forEach((replacement) => {
-              newText = newText.replace(new RegExp(replacement.find, 'ig'), replacement.replace);
+                newText = newText.replace(new RegExp(replacement.find, 'ig'), replacement.replace);
             });
 
             this.c1.sendMessage(newText);
@@ -145,8 +147,8 @@ class Conversation {
                 message: 'Disconnected',
                 server: true
             });
-            if(this.c2.isConnected) {
-              this.c2.disconnect();
+            if (this.c2.isConnected) {
+                this.c2.disconnect();
             }
             this.message('connected', false);
         });
@@ -157,8 +159,8 @@ class Conversation {
                 message: 'Disconnected',
                 server: true
             });
-            if(this.c1.isConnected) {
-              this.c1.disconnect();
+            if (this.c1.isConnected) {
+                this.c1.disconnect();
             }
             this.message('connected', false);
         });
