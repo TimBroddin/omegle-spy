@@ -3,7 +3,7 @@
 
     "name": "Omegle Spy",
     "description": "This extension allows you to spy on Omegle chats",
-    "version": "1.1",
+    "version": "1.2",
     "content_security_policy": "script-src 'self' https://www.google-analytics.com/analytics.js; object-src 'self'",
 
     "browser_action": {

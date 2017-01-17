@@ -32,8 +32,10 @@ class Conversation {
     stop() {
         if (this.c1)
             this.c1.disconnect();
+            this.c1 = null;
         if (this.c2)
             this.c2.disconnect();
+            this.c2 = null;
         }
 
     start() {

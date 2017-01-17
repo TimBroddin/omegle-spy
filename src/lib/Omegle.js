@@ -199,6 +199,7 @@ class Omegle {
     disconnected() {
         this.isConnected = false;
         this.message('disconnect', true);
+        this.listeners = [];
     }
 
     on(type, cb) {
