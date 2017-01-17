@@ -1,0 +1,31 @@
+.logs {
+  height: 90%;
+  overflow: auto;
+  position: absolute;
+  width: 95%;
+}
+
+.log-msg {
+  display: flex;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.log-msg .name {
+  width: 100px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.log-msg .name.green {
+  color: green;
+}
+
+.log-msg .name.red {
+  color: red;
+}
+
+
+.log-msg .name.blue {
+  color: blue;
+}
