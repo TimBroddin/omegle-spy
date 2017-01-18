@@ -9,10 +9,13 @@ import thunk from 'redux-thunk';
 import analytics from 'redux-analytics';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('UA-90487711-1');
+ReactGA.initialize('UA-90487711-1', {
+  debug: true
+});
+ReactGA.set({ checkProtocolTask: () => {} });
+ReactGA.plugin.require('displayfeatures');
 
 const analyticsMiddleware = analytics(({ type, payload }) => {
-  console.log(type, payload);
 
   if(window && window.ga) {
     ReactGA.event({
@@ -21,6 +24,11 @@ const analyticsMiddleware = analytics(({ type, payload }) => {
       value: payload.value,
       label: payload.label
     });
+
+    if(type === 'conversation' && payload.action == 'new') {
+      // send new pageview as well
+      ReactGA.pageview('/');
+    }
 
   }
 

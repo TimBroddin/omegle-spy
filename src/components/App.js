@@ -60,12 +60,9 @@ class App extends Component {
     componentDidMount() {
         const {language} = this.props;
         this.setup(language);
-        this.analytics();
+        ReactGA.pageview('/');
     }
 
-    analytics() {
-      ReactGA.pageview('/');
-    }
 
     newConversation(l) {
         const {newConversation, language} = this.props;

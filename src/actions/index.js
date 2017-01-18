@@ -22,11 +22,32 @@ const changeReplace = (value) => {
 }
 
 const addReplacement = () => {
-    return {type: 'ADD_REPLACEMENT'}
+    return {
+        type: 'ADD_REPLACEMENT',
+        meta: {
+            analytics: {
+                type: 'Replacement',
+                payload: {
+                    action: 'Add'
+                }
+            }
+        }
+    }
 }
 
 const removeReplacement = (index) => {
-    return {type: 'REMOVE_REPLACEMENT', index}
+    return {
+        type: 'REMOVE_REPLACEMENT',
+        index,
+        meta: {
+            analytics: {
+                type: 'Replacement',
+                payload: {
+                    action: 'Remove'
+                }
+            }
+        }
+    }
 }
 
 const setAutoStart = (value) => {
@@ -34,15 +55,50 @@ const setAutoStart = (value) => {
 }
 
 const addMessage = (message) => {
-    return {type: 'ADD_MESSAGE', message}
+    return {
+        type: 'ADD_MESSAGE',
+        message,
+        meta: {
+            analytics: {
+                type: 'Message',
+                payload: {
+                    action: 'Add'
+                }
+            }
+        }
+    }
 }
 
 const newConversation = () => {
-    return {type: 'NEW_CONVERSATION'}
+    return {
+        type: 'NEW_CONVERSATION',
+        meta: {
+            analytics: {
+                type: 'Conversation',
+                payload: {
+                    action: 'New'
+                }
+            }
+        }
+    }
 }
 
 const setConnected = (value) => {
-    return {type: 'SET_CONNECTED', value}
+    return {
+        type: 'SET_CONNECTED',
+        value,
+        meta: {
+            analytics: {
+                type: 'Connected',
+                payload: {
+                    action: (value)
+                        ? 'Connected'
+                        : 'Disconnected'
+                }
+            }
+        }
+
+    }
 }
 
 export {

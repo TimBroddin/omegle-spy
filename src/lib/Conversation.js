@@ -51,7 +51,6 @@ class Conversation {
                 console.log(new RegExp(`/${replacement.find}/ig`), replacement.replace);
                 newText = newText.replace(new RegExp(replacement.find, 'ig'), replacement.replace);
             });
-            console.log(newText);
             this.c2.sendMessage(newText);
             this.message('message', {
                 name: 'Person 1',
